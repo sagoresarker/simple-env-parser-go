@@ -50,13 +50,15 @@ simple-env-parser-go/
 
 ## Functions Reference
 
-### `LoadTheEnvFileAndSetEnvVariablesOnCurrentOSProcess(filename string) error`
+Let's see the functions reference of this project for better understanding. There are three important functions in this project.
+
+#### 1. `LoadTheEnvFileAndSetEnvVariablesOnCurrentOSProcess(filename string) error`
 Reads the .env file, parses it, and sets environment variables on the current OS process.
 
-### `ReadFromEnvFileAndParse(filename string) ([]EnvVar, error)`
+#### 2. `ReadFromEnvFileAndParse(filename string) ([]EnvVar, error)`
 Reads a file and returns a slice of environment variables.
 
-### `GetEnvVariableFromCurrentOSProcess(key, defaultValue string) string`
+#### 3. `GetEnvVariableFromCurrentOSProcess(key, defaultValue string) string`
 Retrieves an environment variable from the current OS process with a fallback default value.
 
 ## Limitations
