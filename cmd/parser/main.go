@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+
 	// load .env file from the current directory
 	if err := envparser.LoadTheEnvFileAndSetEnvVariablesOnCurrentOSProcess(".env"); err != nil {
 		log.Fatalf("Error loading .env file: %v", err)

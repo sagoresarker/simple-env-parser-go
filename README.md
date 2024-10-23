@@ -61,6 +61,12 @@ Reads a file and returns a slice of environment variables.
 #### 3. `GetEnvVariableFromCurrentOSProcess(key, defaultValue string) string`
 Retrieves an environment variable from the current OS process with a fallback default value.
 
+## How to run the project
+
+```bash
+go run cmd/parser/main.go
+```
+
 ## Limitations
 
 This is a simple implementation for educational purposes and doesn't support:

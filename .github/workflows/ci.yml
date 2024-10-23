@@ -1,0 +1,43 @@
+name: Simple Env Parser CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOCKER_REPOSITORY: sagoresarker/simple-env-parser
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.22"
+
+      - name: Run Tests
+        run: make test
+
+      - name: Get commit hash
+        id: hash
+        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and Push Docker image
+        if: github.ref == 'refs/heads/main'
+        run: |
+          make docker-build-ci tag=${{ steps.hash.outputs.hash }}
+          make docker-push-ci tag=${{ steps.hash.outputs.hash }}
