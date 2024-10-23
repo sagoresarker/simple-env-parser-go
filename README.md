@@ -48,7 +48,7 @@ simple-env-parser-go/
 └── README.md
 ```
 
-## API Reference
+## Functions Reference
 
 ### `LoadTheEnvFileAndSetEnvVariablesOnCurrentOSProcess(filename string) error`
 Reads the .env file, parses it, and sets environment variables on the current OS process.
