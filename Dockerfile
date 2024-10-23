@@ -6,7 +6,7 @@ RUN apk add --no-cache make git
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN make build
+RUN go build -o bin/simple-env-parser cmd/parser/main.go
 
 
 FROM alpine:latest
