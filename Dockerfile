@@ -13,7 +13,7 @@ FROM alpine:latest
 WORKDIR /app
 
 COPY --from=builder /app/bin/simple-env-parser .
-COPY .env.example ./.env
+COPY .env ./.env
 
 RUN chmod +x /app/simple-env-parser
 
