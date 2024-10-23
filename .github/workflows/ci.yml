@@ -39,5 +39,6 @@ jobs:
       - name: Build and Push Docker image
         if: github.ref == 'refs/heads/main'
         run: |
+          echo "Building and pushing Docker image"
           make docker-build-ci tag=${{ steps.hash.outputs.hash }}
           make docker-push-ci tag=${{ steps.hash.outputs.hash }}
